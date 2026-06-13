@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CineLog – registre e organize todos os filmes e séries que você já assistiu."
+    />
+    <title>CineLog | Cadastrar Obra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-container" aria-label="Navegação principal">
+        <a href="index.html" class="logo" aria-label="CineLog – página inicial">
+          <span class="logo-icon">🎬</span>
+          <span class="logo-text">CineLog</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html" class="nav-link active">Cadastrar</a></li>
+          <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+          <li>
+            <a
+              href="https://www.imdb.com/chart/top/"
+              class="nav-link nav-link--highlight"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sugestões do IMDb Top Chart – abre em nova aba"
+            >
+              Sugestões ↗
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="hero-eyebrow">Sua cinemateca pessoal</p>
+        <h1 id="hero-title" class="hero-title">Registre o que<br />você assistiu</h1>
+        <p class="hero-subtitle">
+          Guarde suas memórias cinematográficas, acompanhe horas assistidas e monte seu catálogo.
+        </p>
+      </section>
+
+      <section class="form-section" aria-labelledby="form-title">
+        <h2 id="form-title" class="sr-only">Formulário de cadastro</h2>
+
+        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+        <form id="cadastro-form" class="cadastro-form" novalidate>
+          <div class="form-grid">
+
+            <div class="form-group form-group--full">
+              <label for="titulo" class="form-label">Título <span class="required" aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="titulo"
+                name="titulo"
+                class="form-input"
+                placeholder="Ex: Interestelar"
+                required
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="tipo" class="form-label">Tipo <span class="required" aria-hidden="true">*</span></label>
+              <select id="tipo" name="tipo" class="form-input form-select" required>
+                <option value="" disabled selected>Selecione…</option>
+                <option value="Filme">🎬 Filme</option>
+                <option value="Série">📺 Série</option>
+                <option value="Documentário">🎥 Documentário</option>
+                <option value="Animação">✨ Animação</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="genero" class="form-label">Gênero <span class="required" aria-hidden="true">*</span></label>
+              <select id="genero" name="genero" class="form-input form-select" required>
+                <option value="" disabled selected>Selecione…</option>
+                <option value="Ação">Ação</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Comédia">Comédia</option>
+                <option value="Drama">Drama</option>
+                <option value="Ficção Científica">Ficção Científica</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Suspense">Suspense</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="ano" class="form-label">Ano de lançamento <span class="required" aria-hidden="true">*</span></label>
+              <input
+                type="number"
+                id="ano"
+                name="ano"
+                class="form-input"
+                placeholder="Ex: 2014"
+                min="1888"
+                max="2099"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="duracao" class="form-label">Duração (minutos) <span class="required" aria-hidden="true">*</span></label>
+              <input
+                type="number"
+                id="duracao"
+                name="duracao"
+                class="form-input"
+                placeholder="Ex: 169"
+                min="1"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="nota" class="form-label">Sua nota (0–10) <span class="required" aria-hidden="true">*</span></label>
+              <input
+                type="number"
+                id="nota"
+                name="nota"
+                class="form-input"
+                placeholder="Ex: 9"
+                min="0"
+                max="10"
+                step="0.5"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="dataAssistido" class="form-label">Data assistido</label>
+              <input
+                type="date"
+                id="dataAssistido"
+                name="dataAssistido"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="capUrl" class="form-label">URL da capa</label>
+              <input
+                type="url"
+                id="capUrl"
+                name="capUrl"
+                class="form-input"
+                placeholder="https://exemplo.com/poster.jpg"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="youtubeId" class="form-label">ID do trailer no YouTube</label>
+              <input
+                type="text"
+                id="youtubeId"
+                name="youtubeId"
+                class="form-input"
+                placeholder="Ex: zSWdZVtXT7E"
+                autocomplete="off"
+              />
+              <span class="form-hint">Copie apenas o ID do vídeo da URL do YouTube</span>
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="sinopse" class="form-label">Sinopse / comentário</label>
+              <textarea
+                id="sinopse"
+                name="sinopse"
+                class="form-input form-textarea"
+                placeholder="O que você achou? Algum comentário pessoal?"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn--ghost">Limpar</button>
+            <button type="submit" class="btn btn--primary">Salvar no catálogo →</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="info-aside" aria-label="Dica de uso">
+        <span class="info-aside__icon" aria-hidden="true">💡</span>
+        <div>
+          <p class="info-aside__title">Dica</p>
+          <p class="info-aside__text">
+            Adicione o ID do trailer do YouTube e a URL da capa para deixar seu catálogo ainda mais
+            completo e visual. Você poderá assistir ao trailer diretamente pela página de Catálogo.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>CineLog &copy; 2025 — sua cinemateca pessoal</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
