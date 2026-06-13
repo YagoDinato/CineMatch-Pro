@@ -31,9 +31,8 @@ cinelog/
 
 │   ├── main.js      # Classe Filme + lógica do formulário
 
-│   └── display.js   # Renderização e filtros do catálogo
+    └── display.js   # Renderização e filtros do catálogo
 
-└── img/
 
 ## Como usar
 
