@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CineLog – catálogo de filmes e séries que você já assistiu, com estatísticas e trailers."
+    />
+    <title>CineLog | Meu Catálogo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-container" aria-label="Navegação principal">
+        <a href="index.html" class="logo" aria-label="CineLog – página inicial">
+          <span class="logo-icon">🎬</span>
+          <span class="logo-text">CineLog</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html" class="nav-link">Cadastrar</a></li>
+          <li><a href="catalogo.html" class="nav-link active">Catálogo</a></li>
+          <li>
+            <a
+              href="https://www.imdb.com/chart/top/"
+              class="nav-link nav-link--highlight"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sugestões do IMDb Top Chart – abre em nova aba"
+            >
+              Sugestões ↗
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="stats-section" aria-labelledby="stats-title">
+        <h2 id="stats-title" class="sr-only">Painel de estatísticas</h2>
+        <div class="stats-grid">
+          <article class="stat-card" aria-label="Total de obras registradas">
+            <span class="stat-number" id="stat-total">0</span>
+            <span class="stat-label">Obras registradas</span>
+          </article>
+          <article class="stat-card" aria-label="Total de horas assistidas">
+            <span class="stat-number" id="stat-horas">0h</span>
+            <span class="stat-label">Horas assistidas</span>
+          </article>
+          <article class="stat-card" aria-label="Nota média das obras">
+            <span class="stat-number" id="stat-nota">—</span>
+            <span class="stat-label">Nota média</span>
+          </article>
+          <article class="stat-card" aria-label="Total de minutos assistidos">
+            <span class="stat-number" id="stat-minutos">0</span>
+            <span class="stat-label">Minutos no total</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="catalog-title">
+        <div class="catalog-header">
+          <h1 id="catalog-title" class="catalog-title">Meu Catálogo</h1>
+          <div class="catalog-controls">
+            <label for="filtro-tipo" class="sr-only">Filtrar por tipo</label>
+            <select id="filtro-tipo" class="filter-select" aria-label="Filtrar por tipo de obra">
+              <option value="">Todos os tipos</option>
+              <option value="Filme">🎬 Filmes</option>
+              <option value="Série">📺 Séries</option>
+              <option value="Documentário">🎥 Documentários</option>
+              <option value="Animação">✨ Animações</option>
+            </select>
+            <label for="filtro-genero" class="sr-only">Filtrar por gênero</label>
+            <select id="filtro-genero" class="filter-select" aria-label="Filtrar por gênero">
+              <option value="">Todos os gêneros</option>
+              <option value="Ação">Ação</option>
+              <option value="Aventura">Aventura</option>
+              <option value="Comédia">Comédia</option>
+              <option value="Drama">Drama</option>
+              <option value="Ficção Científica">Ficção Científica</option>
+              <option value="Horror">Horror</option>
+              <option value="Romance">Romance</option>
+              <option value="Suspense">Suspense</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Outro">Outro</option>
+            </select>
+            <button id="btn-limpar-tudo" class="btn btn--danger" aria-label="Apagar todo o catálogo">
+              Apagar tudo
+            </button>
+          </div>
+        </div>
+
+        <div id="catalogo-grid" class="catalogo-grid" aria-live="polite" aria-atomic="false">
+        </div>
+
+        <div id="empty-state" class="empty-state" hidden>
+          <span class="empty-icon" aria-hidden="true">🎞️</span>
+          <h2 class="empty-title">Nada por aqui ainda</h2>
+          <p class="empty-desc">Cadastre seu primeiro filme ou série e ele aparecerá aqui.</p>
+          <a href="index.html" class="btn btn--primary">Cadastrar agora →</a>
+        </div>
+      </section>
+
+      <aside class="info-aside" aria-label="Sobre os dados">
+        <span class="info-aside__icon" aria-hidden="true">🔒</span>
+        <div>
+          <p class="info-aside__title">Seus dados ficam no seu navegador</p>
+          <p class="info-aside__text">
+            O CineLog salva tudo localmente, no localStorage do seu dispositivo. Nada é enviado para
+            servidores externos — limpe o catálogo a qualquer momento usando o botão "Apagar tudo".
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Modal de trailer -->
+    <dialog id="modal-trailer" class="modal" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-title" class="modal-title">Trailer</h3>
+          <button class="modal-close" id="modal-close" aria-label="Fechar trailer">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="iframe-wrapper">
+            <iframe
+              id="trailer-iframe"
+              src=""
+              title="Trailer do filme"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="site-footer">
+      <p>CineLog &copy; 2025 — sua cinemateca pessoal</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/display.js"></script>
+  </body>
+</html>
